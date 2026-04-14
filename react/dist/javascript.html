@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS CRUD - Megyék</title>
+  <link rel="stylesheet" crossorigin href="/assets/style-BMYs6GWU.css">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Főoldal</a>
+        <a href="javascript.html">JS CRUD</a>
+        <a href="react.html">React CRUD</a>
+    </nav>
+
+    <main>
+        <h2>Megyék kezelése (Tömb alapú CRUD)</h2>
+
+        <div class="form-group">
+            <input type="text" id="mNev" placeholder="Megye neve">
+            <input type="text" id="mReg" placeholder="Régió">
+            <button class="add" onclick="hozzaad()">Hozzáadás</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Név</th>
+                    <th>Régió</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody id="lista"></tbody>
+        </table>
+    </main>
+
+    <script>
+        let adatok = [
+            {id: 1, nev: "Borsod-Abaúj-Zemplén", regio: "Észak-Magyarország"},
+            {id: 2, nev: "Heves", regio: "Észak-Magyarország"}
+        ];
+
+        function frissit() {
+            const tbody = document.getElementById('lista');
+            tbody.innerHTML = adatok.map((m, i) => `
+                <tr>
+                    <td>${m.id}</td><td>${m.nev}</td><td>${m.regio}</td>
+                    <td>
+                        <button class="edit" onclick="szerkeszt(${i})">Módosítás</button>
+                        <button class="delete" onclick="torol(${i})">Törlés</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function hozzaad() {
+            const n = document.getElementById('mNev').value;
+            const r = document.getElementById('mReg').value;
+            if (!n || !r) return alert("Töltsd ki!");
+            adatok.push({id: Date.now(), nev: n, regio: r});
+            frissit();
+        }
+
+        function torol(i) {adatok.splice(i, 1); frissit();}
+
+        function szerkeszt(i) {
+            const n = prompt("Új név:", adatok[i].nev);
+            const r = prompt("Új régió:", adatok[i].regio);
+            if (n && r) {adatok[i].nev = n; adatok[i].regio = r; frissit();}
+        }
+
+        window.onload = frissit;
+    </script>
+</body>
+
+</html>
