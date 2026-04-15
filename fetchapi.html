@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch API CRUD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Főoldal</a>
+        <a href="javascript.html">JS CRUD</a>
+        <a href="react.html">React CRUD</a>
+        <a href="spa.html">SPA Menü</a>
+        <a href="fetchapi.html">Fetch API</a>
+    </nav>
+
+    <main>
+        <h2>Megyék kezelése (Szerveres adatbázis Fetch API-val)</h2>
+
+        <div class="form-group">
+            <input type="text" id="mNev" placeholder="Megye neve">
+            <input type="text" id="mReg" placeholder="Régió">
+            <button class="add" onclick="hozzaad()">Hozzáadás</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Név</th>
+                    <th>Régió</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody id="lista">
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        
+        const API_URL = 'http://liunjtm3bhzp.nhely.hu/backend/api.php';
+
+        
+        async function betoltes() {
+            try {
+            const valasz = await fetch(API_URL);
+            if (!valasz.ok) {
+                document.getElementById('lista').innerHTML =
+                    `<tr><td colspan="4" style="color:red">Szerver hiba: ${valasz.status} ${valasz.statusText}</td></tr>`;
+                return;
+            }
+            const adatok = await valasz.json();
+            if (!Array.isArray(adatok)) {
+                document.getElementById('lista').innerHTML =
+                    `<tr><td colspan="4" style="color:red">API hiba: ${adatok.hiba ?? JSON.stringify(adatok)}</td></tr>`;
+                return;
+            }
+
+            const tbody = document.getElementById('lista');
+            tbody.innerHTML = adatok.map(m => `
+                <tr>
+                    <td>${m.id}</td><td>${m.nev}</td><td>${m.regio}</td>
+                    <td>
+                        <button class="edit" onclick="szerkeszt(${m.id}, '${m.nev}', '${m.regio}')">Módosítás</button>
+                        <button class="delete" onclick="torol(${m.id})">Törlés</button>
+                    </td>
+                </tr>
+            `).join('');
+            } catch (err) {
+                document.getElementById('lista').innerHTML =
+                    `<tr><td colspan="4" style="color:red">Kapcsolódási hiba: ${err.message}</td></tr>`;
+            }
+        }
+
+        
+        async function hozzaad() {
+            const nev = document.getElementById('mNev').value;
+            const regio = document.getElementById('mReg').value;
+            if (!nev || !regio) return alert("Töltsd ki!");
+
+            await fetch(API_URL, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({nev: nev, regio: regio})
+            });
+
+            document.getElementById('mNev').value = "";
+            document.getElementById('mReg').value = "";
+            betoltes(); // Lista frissítése
+        }
+
+        
+        async function szerkeszt(id, regiNev, regiRegio) {
+            const ujNev = prompt("Új név:", regiNev);
+            const ujRegio = prompt("Új régió:", regiRegio);
+
+            if (ujNev && ujRegio) {
+                await fetch(API_URL, {
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({id: id, nev: ujNev, regio: ujRegio})
+                });
+                betoltes();
+            }
+        }
+
+        
+        async function torol(id) {
+            if (confirm("Biztosan törlöd? A hozzá tartozó helyszínek is törlődnek!")) {
+                await fetch(API_URL, {
+                    method: 'DELETE',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({id: id})
+                });
+                betoltes();
+            }
+        }
+
+        
+        window.onload = betoltes;
+    </script>
+</body>
+
+</html>

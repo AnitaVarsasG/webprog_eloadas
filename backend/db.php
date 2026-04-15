@@ -10,7 +10,8 @@ try {
     );
     
 } catch (PDOException $e) {
-    
-    die("Kapcsolódási hiba történt."); 
+    header('Content-Type: application/json; charset=utf-8');
+    http_response_code(500);
+    die(json_encode(['hiba' => 'Kapcsolódási hiba történt: ' . $e->getMessage()]));
 }
 ?>
