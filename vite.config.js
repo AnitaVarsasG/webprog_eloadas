@@ -8,11 +8,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        javascript: resolve(__dirname, 'javascript.html'),
-        react: resolve(__dirname, 'react.html'),
-        spa: resolve(__dirname, 'spa.html') 
-      }
-    }
-  }
-})
+        main: resolve(__dirname, "index.html"),
+        javascript: resolve(__dirname, "javascript.html"),
+        react: resolve(__dirname, "react.html"),
+        spa: resolve(__dirname, "spa.html"),
+        fetchapi: resolve(__dirname, "fetchapi.html")
+      },
+    },
+  },
+});
