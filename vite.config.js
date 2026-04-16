@@ -13,7 +13,8 @@ export default defineConfig({
         react: resolve(__dirname, "react.html"),
         spa: resolve(__dirname, "spa.html"),
         fetchapi: resolve(__dirname, "fetchapi.html"),
-        axios: resolve(__dirname, "axios.html")
+        axios: resolve(__dirname, "axios.html"),
+        oojs: resolve(__dirname, "oojs.html")
       },
     },
   },
