@@ -228,4 +228,4 @@ try {
 
 ---
 
-[← Fetch API](05-fetchapi.md) | [Vissza a főoldalra](../README.md) | [Következő: Technikai adatok →](07-technikai-adatok.md)
+[← Fetch API](05-fetchapi.md) | [Vissza a főoldalra](../README.md) | [Következő: Axios →](08-axios.md)

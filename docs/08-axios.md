@@ -213,4 +213,4 @@ try {
 
 ---
 
-[← Technikai adatok](07-technikai-adatok.md) | [Vissza a főoldalra](../README.md) | [Következő: OOJS →](09-oojs.md)
+[← Backend](06-backend.md) | [Vissza a főoldalra](../README.md) | [Következő: OOJS →](09-oojs.md)

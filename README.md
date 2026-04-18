@@ -17,9 +17,9 @@
 | 4 | [SPA - Single Page Application](docs/04-spa.md) | Tic-Tac-Toe és Számológép |
 | 5 | [Fetch API](docs/05-fetchapi.md) | Szerveres CRUD műveletek |
 | 6 | [Backend és Adatbázis](docs/06-backend.md) | PHP REST API, MySQL |
-| 7 | [Technikai Adatok](docs/07-technikai-adatok.md) | Hozzáférések, credentials |
-| 8 | [Axios CRUD](docs/08-axios.md) | React + Axios HTTP kliens |
-| 9 | [OOJS Animáció](docs/09-oojs.md) | Objektumorientált JavaScript |
+| 7 | [Axios CRUD](docs/08-axios.md) | React + Axios HTTP kliens |
+| 8 | [OOJS Animáció](docs/09-oojs.md) | Objektumorientált JavaScript |
+| - | [Teljes dokumentáció](docs/Szeltorony_kezelo.md) | Technikai adatok, hozzáférések |
 
 ---
 
@@ -51,7 +51,7 @@ A **Széltorony Kezelő Alkalmazás** egy webes alkalmazás, amely a magyarorsz�
 | Leírás | URL |
 |--------|-----|
 | **Éles weboldal** | http://liunjtm3bhzp.nhely.hu |
-| **GitHub repository** | *[Add meg a GitHub URL-t]* |
+| **GitHub repository** | https://github.com/AnitaVarsasG/webprog_eloadas |
 
 ---
 
@@ -87,9 +87,9 @@ webprog_eloadas-main/
     ├── 04-spa.md
     ├── 05-fetchapi.md
     ├── 06-backend.md
-    ├── 07-technikai-adatok.md
     ├── 08-axios.md
-    └── 09-oojs.md
+    ├── 09-oojs.md
+    └── Szeltorony_kezelo.md
 ```
 
 ---
@@ -108,13 +108,12 @@ A dokumentáció részletesen bemutatja az egyes feladatpontok megvalósításá
 | Adatbázis | [06-backend.md](docs/06-backend.md) | backend/db.php |
 | Axios HTTP kliens | [08-axios.md](docs/08-axios.md) | axios.html, src/AxiosApp.jsx |
 | OOJS Animáció | [09-oojs.md](docs/09-oojs.md) | oojs.html |
-| Hozzáférési adatok | [07-technikai-adatok.md](docs/07-technikai-adatok.md) | - |
 
 ---
 
 ## Technikai információk
 
-A részletes technikai adatok (FTP, adatbázis hozzáférés, jelszavak) a [Technikai Adatok](docs/07-technikai-adatok.md) oldalon találhatók.
+A részletes technikai adatok (FTP, adatbázis hozzáférés, jelszók) a [Széltorony Kezelő dokumentáció](docs/Szeltorony_kezelo.md) elején találhatók.
 
 ### Használt technológiák
 
