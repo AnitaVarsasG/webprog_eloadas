@@ -12,7 +12,8 @@ export default defineConfig({
         javascript: resolve(__dirname, "javascript.html"),
         react: resolve(__dirname, "react.html"),
         spa: resolve(__dirname, "spa.html"),
-        fetchapi: resolve(__dirname, "fetchapi.html")
+        fetchapi: resolve(__dirname, "fetchapi.html"),
+        axios: resolve(__dirname, "axios.html")
       },
     },
   },
